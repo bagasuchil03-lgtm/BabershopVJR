@@ -1,0 +1,246 @@
+[2026-06-03 16:12:17] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-03 16:12:18] QUERY USER - Baris hasil query: 1
+[2026-06-03 16:12:18] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-03 16:12:18] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-03 16:12:18] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-03 16:12:18] REDIRECT - Diarahkan ke admin/dashboard.php
+[2026-06-03 16:25:29] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-03 16:25:29] QUERY USER - Baris hasil query: 1
+[2026-06-03 16:25:29] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-03 16:25:29] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-03 16:25:29] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-03 16:25:29] REDIRECT - Diarahkan ke admin/dashboard.php
+[2026-06-03 16:27:20] PROSES LOGIN - Percobaan login untuk username: 'kasir_1'
+[2026-06-03 16:27:20] QUERY USER - Baris hasil query: 1
+[2026-06-03 16:27:20] QUERY RESULT - Ditemukan user ID: 2, Nama: Kasir Utama, Role: kasir
+[2026-06-03 16:27:20] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-03 16:27:20] STATUS SESSION - {"id_user":2,"nama_lengkap":"Kasir Utama","role":"kasir"}
+[2026-06-03 16:27:20] REDIRECT - Diarahkan ke admin/dashboard.php
+[2026-06-04 07:13:12] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-04 07:13:12] QUERY USER - Baris hasil query: 1
+[2026-06-04 07:13:12] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-04 07:13:13] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-04 07:13:13] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-04 07:13:13] REDIRECT - Diarahkan ke admin/dashboard.php
+[2026-06-04 07:15:19] PROSES LOGIN - Percobaan login untuk username: 'kasir_vijer1'
+[2026-06-04 07:15:19] QUERY USER - Baris hasil query: 0
+[2026-06-04 07:15:19] QUERY ERROR - Username 'kasir_vijer1' tidak ditemukan.
+[2026-06-04 07:15:58] PROSES LOGIN - Percobaan login untuk username: 'kasir_1'
+[2026-06-04 07:15:58] QUERY USER - Baris hasil query: 1
+[2026-06-04 07:15:58] QUERY RESULT - Ditemukan user ID: 2, Nama: Kasir Utama, Role: kasir
+[2026-06-04 07:15:58] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-04 07:15:58] STATUS SESSION - {"id_user":2,"nama_lengkap":"Kasir Utama","role":"kasir"}
+[2026-06-04 07:15:58] REDIRECT - Diarahkan ke admin/dashboard.php
+[2026-06-04 07:18:24] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-04 07:18:24] QUERY USER - Baris hasil query: 1
+[2026-06-04 07:18:24] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-04 07:18:24] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-04 07:18:24] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-04 07:18:24] REDIRECT - Diarahkan ke admin/dashboard.php
+[2026-06-05 04:54:58] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 04:55:01] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 04:55:06] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 05:03:13] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 05:12:34] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 05:30:01] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 05:30:17] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 05:32:18] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 05:56:22] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 05:59:10] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:05:38] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:07:25] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:08:51] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:08:56] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:09:09] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:15:26] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:15:26] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:15:26] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:15:26] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:15:33] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:15:33] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:15:33] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:15:33] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:15:37] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:15:37] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:15:37] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:15:37] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:15:38] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:15:38] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:15:38] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:15:38] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:16:33] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:16:33] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:16:33] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:16:33] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:16:36] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:16:36] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:16:36] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:16:37] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:16:37] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:16:37] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:16:37] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:16:37] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:16:39] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:16:39] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:16:39] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:16:39] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:16:40] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:16:40] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:16:40] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:16:40] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:16:40] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:16:40] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:16:40] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:16:40] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:16:40] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:16:40] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:16:40] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:16:40] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:17:14] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:17:14] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:17:14] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:17:14] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:17:19] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:17:19] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:17:19] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:17:19] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:17:20] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:17:20] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:17:20] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:17:20] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:17:32] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:17:32] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:17:32] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:17:32] PASSWORD VERIFY ERROR - Password salah.
+[2026-06-05 06:19:43] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:19:43] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:19:43] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:19:43] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-05 06:19:43] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-05 06:19:43] REDIRECT - Diarahkan ke admin.php
+[2026-06-05 06:26:45] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:26:45] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:26:45] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:26:45] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-05 06:26:45] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-05 06:26:45] REDIRECT - Diarahkan ke admin.php
+[2026-06-05 06:42:09] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-05 06:42:09] QUERY USER - Baris hasil query: 1
+[2026-06-05 06:42:09] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-05 06:42:09] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-05 06:42:09] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-05 06:42:09] REDIRECT - Diarahkan ke admin.php
+[2026-06-08 07:18:10] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-08 07:18:10] QUERY USER - Baris hasil query: 1
+[2026-06-08 07:18:10] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-08 07:18:10] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-08 07:18:10] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-08 07:18:10] REDIRECT - Diarahkan ke admin.php
+[2026-06-08 08:35:42] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-08 08:35:42] QUERY USER - Baris hasil query: 1
+[2026-06-08 08:35:42] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-08 08:35:42] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-08 08:35:42] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-08 08:35:42] REDIRECT - Diarahkan ke admin.php
+[2026-06-08 08:38:47] PROSES LOGIN - Percobaan login untuk username: 'kasir_1'
+[2026-06-08 08:38:47] QUERY USER - Baris hasil query: 1
+[2026-06-08 08:38:47] QUERY RESULT - Ditemukan user ID: 2, Nama: Kasir Utama, Role: kasir
+[2026-06-08 08:38:47] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-08 08:38:47] STATUS SESSION - {"id_user":2,"nama_lengkap":"Kasir Utama","role":"kasir"}
+[2026-06-08 08:38:47] REDIRECT - Diarahkan ke admin.php
+[2026-06-08 08:39:48] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-08 08:39:48] QUERY USER - Baris hasil query: 1
+[2026-06-08 08:39:48] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-08 08:39:48] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-08 08:39:48] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-08 08:39:48] REDIRECT - Diarahkan ke admin.php
+[2026-06-08 09:14:43] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-08 09:14:43] QUERY USER - Baris hasil query: 1
+[2026-06-08 09:14:43] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-08 09:14:43] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-08 09:14:43] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-08 09:14:43] REDIRECT - Diarahkan ke admin.php
+[2026-06-10 05:54:46] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-10 05:54:46] QUERY USER - Baris hasil query: 1
+[2026-06-10 05:54:46] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-10 05:54:46] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-10 05:54:46] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-10 05:54:46] REDIRECT - Diarahkan ke admin.php
+[2026-06-11 16:03:22] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-11 16:03:22] QUERY USER - Baris hasil query: 1
+[2026-06-11 16:03:22] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-11 16:03:22] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-11 16:03:22] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-11 16:03:22] REDIRECT - Diarahkan ke admin.php
+[2026-06-12 04:07:14] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-12 04:07:14] QUERY USER - Baris hasil query: 1
+[2026-06-12 04:07:14] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-12 04:07:14] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-12 04:07:14] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-12 04:07:14] REDIRECT - Diarahkan ke admin.php
+[2026-06-12 05:23:25] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-12 05:23:25] QUERY USER - Baris hasil query: 1
+[2026-06-12 05:23:25] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-12 05:23:25] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-12 05:23:25] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-12 05:23:25] REDIRECT - Diarahkan ke admin.php
+[2026-06-17 05:52:01] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-17 05:52:01] QUERY USER - Baris hasil query: 1
+[2026-06-17 05:52:01] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-17 05:52:01] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-17 05:52:01] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-17 05:52:01] REDIRECT - Diarahkan ke admin.php
+[2026-06-19 04:28:55] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-19 04:28:55] QUERY USER - Baris hasil query: 1
+[2026-06-19 04:28:55] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-19 04:28:56] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-19 04:28:56] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-19 04:28:56] REDIRECT - Diarahkan ke admin.php
+[2026-06-19 08:27:56] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-19 08:27:56] QUERY USER - Baris hasil query: 1
+[2026-06-19 08:27:56] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-19 08:27:56] PASSWORD VERIFY - Sukses, password cocok.
+[2026-06-19 08:27:56] STATUS SESSION - {"id_user":1,"nama_lengkap":"Admin Vijer","role":"admin"}
+[2026-06-19 08:27:56] REDIRECT - Diarahkan ke admin.php
+[2026-06-25 06:35:58] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-06-25 06:35:58] QUERY USER - Baris hasil query: 1
+[2026-06-25 06:35:58] QUERY RESULT - Ditemukan user ID: 1, Nama: Admin Vijer, Role: admin
+[2026-06-25 06:35:58] PASSWORD VERIFY - Sukses, password cocok.
+[2026-07-02 05:45:15] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-07-02 05:48:08] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-07-02 05:48:08] QUERY USER - Baris hasil query: 0
+[2026-07-02 05:48:08] QUERY ERROR - Username 'admin_vijer' tidak ditemukan.
+[2026-07-02 05:48:11] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-07-02 05:48:11] QUERY USER - Baris hasil query: 0
+[2026-07-02 05:48:11] QUERY ERROR - Username 'admin_vijer' tidak ditemukan.
+[2026-07-02 05:48:13] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-07-02 05:48:13] QUERY USER - Baris hasil query: 0
+[2026-07-02 05:48:13] QUERY ERROR - Username 'admin_vijer' tidak ditemukan.
+[2026-07-02 05:48:15] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-07-02 05:48:15] QUERY USER - Baris hasil query: 0
+[2026-07-02 05:48:15] QUERY ERROR - Username 'admin_vijer' tidak ditemukan.
+[2026-07-02 05:48:20] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-07-02 05:48:20] QUERY USER - Baris hasil query: 0
+[2026-07-02 05:48:20] QUERY ERROR - Username 'admin_vijer' tidak ditemukan.
+[2026-07-02 05:54:19] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-07-02 05:54:19] QUERY USER - Baris hasil query: 1
+[2026-07-02 05:54:19] QUERY RESULT - Ditemukan user ID: 1, Nama: Administrator Vijer, Role: admin
+[2026-07-02 05:54:19] PASSWORD VERIFY - Sukses, password cocok.
+[2026-07-03 05:32:56] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-07-03 05:32:56] QUERY USER - Baris hasil query: 1
+[2026-07-03 05:32:56] QUERY RESULT - Ditemukan user ID: 1, Nama: Administrator Vijer, Role: admin
+[2026-07-03 05:32:56] PASSWORD VERIFY - Sukses, password cocok.
+[2026-07-03 05:32:56] STATUS SESSION - {"id_user":1,"nama_lengkap":"Administrator Vijer","role":"admin"}
+[2026-07-03 05:32:56] REDIRECT - Diarahkan ke admin.php
+[2026-07-03 05:54:31] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-07-03 05:54:31] QUERY USER - Baris hasil query: 1
+[2026-07-03 05:54:31] QUERY RESULT - Ditemukan user ID: 1, Nama: Administrator Vijer, Role: admin
+[2026-07-03 05:54:31] PASSWORD VERIFY - Sukses, password cocok.
+[2026-07-03 05:54:31] STATUS SESSION - {"id_user":1,"nama_lengkap":"Administrator Vijer","role":"admin"}
+[2026-07-03 05:54:31] REDIRECT - Diarahkan ke admin.php
+[2026-07-03 09:11:15] PROSES LOGIN - Percobaan login untuk username: 'admin_vijer'
+[2026-07-03 09:11:15] QUERY USER - Baris hasil query: 1
+[2026-07-03 09:11:15] QUERY RESULT - Ditemukan user ID: 1, Nama: Administrator Vijer, Role: admin
+[2026-07-03 09:11:15] PASSWORD VERIFY - Sukses, password cocok.
+[2026-07-03 09:11:15] STATUS SESSION - {"id_user":1,"nama_lengkap":"Administrator Vijer","role":"admin"}
+[2026-07-03 09:11:15] REDIRECT - Diarahkan ke admin.php

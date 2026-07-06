@@ -1,0 +1,110 @@
+REQUEST RECEIVED. Action: 'delete'
+POST: Array
+(
+    [action] => delete
+    [id] => 6
+)
+
+FILES: Array
+(
+)
+
+
+REQUEST RECEIVED. Action: 'delete'
+POST: Array
+(
+    [action] => delete
+    [id] => 2
+)
+
+FILES: Array
+(
+)
+
+
+REQUEST RECEIVED. Action: 'add'
+POST: Array
+(
+    [action] => add
+)
+
+FILES: Array
+(
+    [slider_image] => Array
+        (
+            [name] => Screenshot 2026-07-03 105141.png
+            [full_path] => Screenshot 2026-07-03 105141.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php8A2F.tmp
+            [error] => 0
+            [size] => 83956
+        )
+
+)
+
+
+Action ADD triggered.
+FILES: Array
+(
+    [slider_image] => Array
+        (
+            [name] => Screenshot 2026-07-03 105141.png
+            [full_path] => Screenshot 2026-07-03 105141.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php8A2F.tmp
+            [error] => 0
+            [size] => 83956
+        )
+
+)
+
+Upload Success! Path: uploads/homepage/about_slider_1783065309_6a476add0b79d.png
+REQUEST RECEIVED. Action: 'delete'
+POST: Array
+(
+    [action] => delete
+    [id] => 7
+)
+
+FILES: Array
+(
+)
+
+
+REQUEST RECEIVED. Action: 'add'
+POST: Array
+(
+    [action] => add
+)
+
+FILES: Array
+(
+    [slider_image] => Array
+        (
+            [name] => Screenshot 2026-07-03 105141.png
+            [full_path] => Screenshot 2026-07-03 105141.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php731B.tmp
+            [error] => 0
+            [size] => 83956
+        )
+
+)
+
+
+Action ADD triggered.
+FILES: Array
+(
+    [slider_image] => Array
+        (
+            [name] => Screenshot 2026-07-03 105141.png
+            [full_path] => Screenshot 2026-07-03 105141.png
+            [type] => image/png
+            [tmp_name] => C:\xampp\tmp\php731B.tmp
+            [error] => 0
+            [size] => 83956
+        )
+
+)
+
+Upload Success! Path: uploads/homepage/about_slider_1783065565_6a476bdd42e3b.png
