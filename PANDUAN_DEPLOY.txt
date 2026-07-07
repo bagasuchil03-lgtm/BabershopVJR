@@ -1,0 +1,369 @@
+================================================================================
+  PANDUAN DEPLOY - VIJER BARBERSHOP BOOKING SYSTEM
+  Terakhir diperbarui: 7 Juli 2026
+================================================================================
+
+Project ini menggunakan PHP + MySQL, sehingga TIDAK bisa di-deploy langsung 
+ke Vercel (Vercel hanya mendukung PHP secara terbatas dan TIDAK mendukung MySQL).
+
+Berikut panduan deploy menggunakan layanan GRATIS yang cocok untuk project ini:
+
+
+================================================================================
+ OPSI 1: RAILWAY (Rekomendasi Utama)
+ https://railway.app
+================================================================================
+
+Railway memberikan Free Tier $5/bulan yang cukup untuk project kecil-menengah.
+Mendukung PHP + MySQL secara native.
+
+--- LANGKAH-LANGKAH ---
+
+1. PERSIAPAN AKUN
+   - Buka https://railway.app dan daftar menggunakan akun GitHub
+   - Pastikan project sudah di-push ke repository GitHub
+
+2. PUSH PROJECT KE GITHUB (jika belum)
+   Buka terminal di folder project, lalu jalankan:
+
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git branch -M main
+   git remote add origin https://github.com/USERNAME/NAMA-REPO.git
+   git push -u origin main
+
+   PENTING: Buat file .gitignore sebelum push, isi minimal:
+   -------------------------------------------------------
+   uploads/bukti/*
+   uploads/qris/*
+   uploads/service/*
+   uploads/homepage/*
+   uploads/barber/*
+   !uploads/*/.gitkeep
+   login_debug.log
+   upload_debug.txt
+   -------------------------------------------------------
+
+3. BUAT PROJECT DI RAILWAY
+   a. Login ke https://railway.app/dashboard
+   b. Klik "New Project"
+   c. Pilih "Deploy from GitHub Repo"
+   d. Pilih repository project barbershop kamu
+   e. Railway akan otomatis mendeteksi project PHP
+
+4. TAMBAHKAN DATABASE MYSQL
+   a. Di dalam project Railway, klik "+ New" > "Database" > "MySQL"
+   b. Railway akan membuat database MySQL secara otomatis
+   c. Klik database MySQL yang baru dibuat
+   d. Buka tab "Variables" dan catat informasi berikut:
+      - MYSQLHOST      (contoh: containers-us-west-xxx.railway.app)
+      - MYSQLPORT      (contoh: 7890)
+      - MYSQLDATABASE  (contoh: railway)
+      - MYSQLUSER      (contoh: root)
+      - MYSQLPASSWORD  (contoh: xxxxxxxx)
+
+5. BUAT FILE KONFIGURASI UNTUK RAILWAY
+
+   a. Buat file bernama "nixpacks.toml" di root project:
+      -------------------------------------------------------
+      [phases.setup]
+      nixPkgs = ["php82", "php82Extensions.mysqli", "php82Extensions.mbstring"]
+      -------------------------------------------------------
+
+   b. Buat file bernama "Procfile" (tanpa ekstensi) di root project:
+      -------------------------------------------------------
+      web: php -S 0.0.0.0:$PORT -t .
+      -------------------------------------------------------
+
+6. UBAH KONEKSI DATABASE
+   Edit file "koneksi.php", ganti bagian konfigurasi database menjadi:
+
+   -------------------------------------------------------
+   $host     = getenv('MYSQLHOST')     ?: 'localhost';
+   $username = getenv('MYSQLUSER')     ?: 'root';
+   $password = getenv('MYSQLPASSWORD') ?: '';
+   $database = getenv('MYSQLDATABASE') ?: 'db_booking_barbershop';
+   $port     = getenv('MYSQLPORT')     ?: 3306;
+
+   $conn = new mysqli($host, $username, $password, $database, $port);
+   -------------------------------------------------------
+
+   Dengan cara ini, koneksi otomatis menggunakan variabel Railway 
+   saat di server, dan tetap menggunakan XAMPP saat di localhost.
+
+7. IMPORT DATABASE
+   a. Buka phpMyAdmin di localhost
+   b. Export database "db_booking_barbershop" sebagai file .sql
+      (pilih Format: SQL, klik "Export")
+   c. Di Railway, buka tab database MySQL > "Data" > "Import"
+      Upload file .sql yang sudah di-export
+   
+   ALTERNATIF via CLI:
+   mysql -h MYSQLHOST -P MYSQLPORT -u MYSQLUSER -pMYSQLPASSWORD MYSQLDATABASE < export.sql
+
+8. DEPLOY
+   a. Push semua perubahan ke GitHub:
+      git add .
+      git commit -m "Configure for Railway deployment"
+      git push
+   b. Railway akan otomatis melakukan build dan deploy
+   c. Klik "Generate Domain" di settings untuk mendapatkan URL publik
+      (contoh: barbershop-production.up.railway.app)
+
+9. JALANKAN SETUP
+   Buka URL: https://DOMAIN-KAMU.up.railway.app/setup_init.php
+   untuk melakukan inisialisasi database di server.
+
+10. SELESAI!
+    Website sudah bisa diakses di URL publik Railway.
+
+
+================================================================================
+ OPSI 2: INFINITYFREE (100% Gratis, Tanpa Batas Waktu)
+ https://infinityfree.com
+================================================================================
+
+InfinityFree menyediakan hosting PHP + MySQL gratis tanpa batas waktu.
+Cocok untuk project tugas kuliah atau portofolio.
+
+--- LANGKAH-LANGKAH ---
+
+1. DAFTAR AKUN
+   - Buka https://infinityfree.com dan klik "Sign Up"
+   - Verifikasi email
+
+2. BUAT HOSTING BARU
+   a. Login ke panel InfinityFree
+   b. Klik "Create Account"
+   c. Pilih subdomain gratis (contoh: vijerbarbershop.infinityfreeapp.com)
+      atau gunakan domain sendiri jika punya
+   d. Catat informasi yang diberikan:
+      - FTP Host, Username, Password
+      - MySQL Host, Database Name, Username, Password
+
+3. BUAT DATABASE
+   a. Di panel InfinityFree, buka "MySQL Databases"
+   b. Buat database baru (nama akan otomatis memiliki prefix)
+   c. Catat nama database, username, dan password yang diberikan
+
+4. IMPORT DATABASE
+   a. Buka phpMyAdmin dari panel InfinityFree
+   b. Pilih database yang baru dibuat
+   c. Klik tab "Import"
+   d. Upload file .sql yang sudah di-export dari localhost
+
+5. EDIT KONEKSI DATABASE
+   Edit file "koneksi.php", sesuaikan dengan informasi dari InfinityFree:
+   
+   -------------------------------------------------------
+   $host     = 'sql123.infinityfree.com';     // dari panel
+   $username = 'if0_12345678';                 // dari panel
+   $password = 'PASSWORD_DARI_PANEL';          // dari panel
+   $database = 'if0_12345678_db_barbershop';   // dari panel
+   -------------------------------------------------------
+
+6. UPLOAD FILE MELALUI FTP
+   a. Download dan install FileZilla: https://filezilla-project.org
+   b. Buka FileZilla, masukkan:
+      - Host     : ftpupload.net
+      - Username : (dari panel InfinityFree)
+      - Password : (dari panel InfinityFree)
+      - Port     : 21
+   c. Klik "Quickconnect"
+   d. Di sisi server (kanan), masuk ke folder "htdocs"
+   e. Di sisi lokal (kiri), buka folder project
+   f. Upload SEMUA file dan folder ke dalam "htdocs"
+   
+   PENTING: Pastikan folder berikut ikut terupload:
+   - uploads/ (beserta subfolder: bukti, qris, service, homepage, barber)
+   - assets/
+   - admin/
+
+7. JALANKAN SETUP
+   Buka: http://SUBDOMAIN-KAMU.infinityfreeapp.com/setup_init.php
+
+8. SELESAI!
+
+   CATATAN INFINITYFREE:
+   - Tidak mendukung fungsi mail() PHP
+   - Ada batasan bandwidth harian
+   - Mungkin ada iklan yang ditambahkan oleh InfinityFree
+   - Fitur WhatsApp API (Fonnte) tetap bisa digunakan karena 
+     menggunakan CURL ke API eksternal
+
+
+================================================================================
+ OPSI 3: 000WEBHOST (Gratis dengan Batasan)
+ https://www.000webhost.com
+================================================================================
+
+--- LANGKAH-LANGKAH ---
+
+1. DAFTAR AKUN
+   - Buka https://www.000webhost.com
+   - Klik "Free Sign Up"
+   - Verifikasi email
+
+2. BUAT WEBSITE
+   a. Setelah login, klik "Create New Site"
+   b. Masukkan nama website (contoh: vijer-barbershop)
+   c. Buat password untuk website
+   d. URL akan menjadi: vijer-barbershop.000webhostapp.com
+
+3. BUAT DATABASE
+   a. Buka menu "Database" > "New Database"
+   b. Isi nama database, username, dan password
+   c. Catat semua informasi tersebut
+
+4. IMPORT DATABASE
+   a. Klik "phpMyAdmin" di sebelah database yang baru dibuat
+   b. Pilih database, klik tab "Import"
+   c. Upload file .sql dari localhost
+
+5. EDIT KONEKSI DATABASE
+   Edit "koneksi.php" dengan informasi dari 000webhost:
+
+   -------------------------------------------------------
+   $host     = 'localhost';               // tetap localhost di 000webhost
+   $username = 'id12345_admin';           // username dari panel
+   $password = 'PASSWORD_DARI_PANEL';     // password dari panel
+   $database = 'id12345_db_barbershop';   // nama database dari panel
+   -------------------------------------------------------
+
+6. UPLOAD FILE
+   a. Buka "File Manager" di panel 000webhost
+   b. Masuk ke folder "public_html"
+   c. Upload semua file project (bisa via ZIP lalu extract di server)
+   
+   TIPS: Compress project menjadi .zip, upload .zip tersebut,
+   lalu extract di server menggunakan File Manager.
+
+7. JALANKAN SETUP
+   Buka: https://vijer-barbershop.000webhostapp.com/setup_init.php
+
+8. SELESAI!
+
+   CATATAN 000WEBHOST:
+   - Website akan sleep setelah 1 jam tidak ada pengunjung
+   - Bandwidth terbatas
+   - Tidak bisa menggunakan .htaccess kustom di free plan
+
+
+================================================================================
+ TIPS UMUM SEBELUM DEPLOY
+================================================================================
+
+1. EXPORT DATABASE DARI LOCALHOST
+   a. Buka phpMyAdmin: http://localhost/phpmyadmin
+   b. Pilih database "db_booking_barbershop"
+   c. Klik "Export" > Format: SQL > klik "Export"
+   d. Simpan file .sql yang dihasilkan
+
+2. FILE YANG HARUS DIEDIT SEBELUM DEPLOY
+   - koneksi.php  → sesuaikan host, username, password, database
+   - Nonaktifkan file debug:
+     * Hapus atau rename: check_db.php, reset_admin.php, temp_migrate.php
+   - Ubah SETUP_ENABLED di setup_init.php menjadi false SETELAH setup selesai
+
+3. FILE YANG TIDAK PERLU DIUPLOAD
+   - .git/                (folder git)
+   - login_debug.log      (log debug)
+   - upload_debug.txt     (log debug)
+   - check_db.php         (script debug)
+   - reset_admin.php      (script debug)
+   - temp_migrate.php     (script debug)
+   - vercel.json          (tidak dipakai karena Vercel tidak cocok)
+
+4. KEAMANAN SETELAH DEPLOY
+   - Ganti password admin default
+   - Ubah SETUP_ENABLED menjadi false di setup_init.php
+   - Hapus file setup_init.php, migrate.php, seed_data.php dari server
+     setelah setup selesai
+   - Pastikan folder uploads/ memiliki permission yang benar (755)
+   - Ganti WA_API_KEY di koneksi.php dengan API key Fonnte yang asli
+
+5. KONFIGURASI WHATSAPP NOTIFIKASI
+   - Daftar di https://fonnte.com (gratis untuk testing)
+   - Dapatkan API Key
+   - Ganti 'ISI_API_KEY_FONNTE_ANDA' di koneksi.php dengan API key asli
+   - Ganti WA_ADMIN_NUMBER dengan nomor WhatsApp admin yang benar
+
+
+================================================================================
+ PERBANDINGAN LAYANAN HOSTING GRATIS
+================================================================================
+
+ Fitur              | Railway        | InfinityFree   | 000webhost
+ -------------------|----------------|----------------|----------------
+ PHP Support        | Ya             | Ya             | Ya
+ MySQL Support      | Ya             | Ya             | Ya
+ SSL/HTTPS          | Ya (otomatis)  | Ya             | Ya
+ Custom Domain      | Ya             | Ya             | Berbayar
+ Storage            | ~500 MB        | 5 GB           | 300 MB
+ Bandwidth          | ~$5/bulan      | Unlimited*     | 3 GB/bulan
+ Auto Deploy (Git)  | Ya             | Tidak          | Tidak
+ Sleep/Downtime     | Setelah kredit | Tidak          | Ya (1 jam idle)
+ Upload File        | Via Git        | Via FTP        | File Manager
+ Kemudahan          | Mudah          | Sedang         | Mudah
+ -------------------|----------------|----------------|----------------
+
+ * InfinityFree unlimited tapi ada fair usage policy
+
+
+================================================================================
+ REKOMENDASI
+================================================================================
+
+ → Untuk KEMUDAHAN dan PROFESIONALITAS : Gunakan Railway (Opsi 1)
+   Railway paling mudah karena auto-deploy dari GitHub.
+   Cocok jika kamu sudah familiar dengan Git.
+
+ → Untuk GRATIS TANPA BATAS WAKTU       : Gunakan InfinityFree (Opsi 2)
+   Cocok untuk demo project tugas kuliah yang perlu online lama.
+
+ → Untuk CEPAT dan SIMPLE               : Gunakan 000webhost (Opsi 3)
+   File Manager berbasis web, tidak perlu install FTP client.
+
+
+================================================================================
+ TROUBLESHOOTING
+================================================================================
+
+ Q: Error "Access denied for user" saat mengakses website
+ A: Cek kembali username, password, dan nama database di koneksi.php.
+    Pastikan sesuai dengan informasi dari panel hosting.
+
+ Q: Halaman blank putih / Error 500
+ A: Aktifkan error reporting dengan menambahkan di awal koneksi.php:
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
+ Q: Upload gambar gagal
+ A: Pastikan folder uploads/ dan subfoldernya memiliki permission
+    yang benar (755 atau 777 tergantung hosting).
+
+ Q: Website lambat atau sering down
+ A: Normal untuk hosting gratis. Pertimbangkan upgrade ke paket 
+    berbayar jika sudah digunakan secara serius.
+
+ Q: Database error setelah import
+ A: Pastikan menjalankan setup_init.php setelah import database
+    untuk melengkapi migrasi yang mungkin tertinggal.
+
+ Q: Fitur WhatsApp tidak berfungsi
+ A: Pastikan API Key Fonnte sudah diganti di koneksi.php dan
+    akun Fonnte sudah aktif. Cek juga apakah hosting mengizinkan
+    koneksi CURL ke API eksternal.
+
+
+================================================================================
+ KONTAK & BANTUAN
+================================================================================
+
+ Jika mengalami kendala, cek dokumentasi resmi masing-masing layanan:
+ - Railway    : https://docs.railway.app
+ - InfinityFree: https://infinityfree.com/support
+ - 000webhost : https://www.000webhost.com/forum
+
+================================================================================
