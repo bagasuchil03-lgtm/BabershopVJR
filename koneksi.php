@@ -2,13 +2,25 @@
 // koneksi.php
 // File ini digunakan untuk menghubungkan aplikasi PHP dengan database MySQL.
 
-$host = 'localhost'; // Server database
-$username = 'root';  // Username database (default XAMPP: root)
-$password = '';      // Password database (default XAMPP: kosong)
-$database = 'db_booking_barbershop'; // Nama database yang digunakan
+// ==========================================
+// KONFIGURASI LOKAL (XAMPP) - Dinonaktifkan
+// ==========================================
+// $host = 'localhost'; // Server database
+// $username = 'root';  // Username database (default XAMPP: root)
+// $password = '';      // Password database (default XAMPP: kosong)
+// $database = 'db_booking_barbershop'; // Nama database yang digunakan
+
+// ==========================================
+// KONFIGURASI RAILWAY (AKTIF)
+// ==========================================
+$host     = 'mysql.railway.internal';
+$username = 'root';
+$password = 'AErAuDgWqwPEDFcTWIMbwrsHZIXBCLEr';
+$database = 'railway';
+$port     = 3306;
 
 // Membuat koneksi menggunakan mysqli (Procedural + Object Oriented concept)
-$conn = new mysqli($host, $username, $password, $database);
+$conn = new mysqli($host, $username, $password, $database, $port);
 
 // Mengecek apakah koneksi berhasil
 if ($conn->connect_error) {
