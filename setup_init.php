@@ -35,86 +35,92 @@ function addResult(array &$results, bool $ok, string $label, string $detail = ''
 // ─────────────────────────────────────────────────────────────────────────────
 // LANGKAH 1: Tambahkan kolom `image_path` ke tabel `layanan` jika belum ada
 // ─────────────────────────────────────────────────────────────────────────────
-$colCheck = $conn->query("SHOW COLUMNS FROM `layanan` LIKE 'image_path'");
-if ($colCheck->num_rows === 0) {
-    $res = $conn->query("ALTER TABLE `layanan` ADD COLUMN `image_path` VARCHAR(255) NULL DEFAULT NULL AFTER `durasi_menit`");
-    if ($res) {
-        addResult($results, true, 'Kolom <code>image_path</code> ditambahkan ke tabel <code>layanan</code>');
+$tableLayananExists = $conn->query("SHOW TABLES LIKE 'layanan'");
+if ($tableLayananExists && $tableLayananExists->num_rows > 0) {
+    $colCheck = $conn->query("SHOW COLUMNS FROM `layanan` LIKE 'image_path'");
+    if ($colCheck->num_rows === 0) {
+        $res = $conn->query("ALTER TABLE `layanan` ADD COLUMN `image_path` VARCHAR(255) NULL DEFAULT NULL AFTER `durasi_menit`");
+        if ($res) {
+            addResult($results, true, 'Kolom <code>image_path</code> ditambahkan ke tabel <code>layanan</code>');
+        } else {
+            addResult($results, false, 'Gagal menambahkan kolom <code>image_path</code>', $conn->error);
+            $hasError = true;
+        }
     } else {
-        addResult($results, false, 'Gagal menambahkan kolom <code>image_path</code>', $conn->error);
-        $hasError = true;
+        addResult($results, true, 'Kolom <code>image_path</code> sudah ada – dilewati');
     }
 } else {
-    addResult($results, true, 'Kolom <code>image_path</code> sudah ada – dilewati');
+    addResult($results, false, 'Tabel <code>layanan</code> belum ada', 'Pastikan database sudah di-import terlebih dahulu.');
+    $hasError = true;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // LANGKAH 1.5: Tambahkan kolom `status` ke tabel `users` jika belum ada
 // ─────────────────────────────────────────────────────────────────────────────
-$colCheckStatus = $conn->query("SHOW COLUMNS FROM `users` LIKE 'status'");
-if ($colCheckStatus->num_rows === 0) {
-    $resStatus = $conn->query("ALTER TABLE `users` ADD COLUMN `status` ENUM('aktif', 'nonaktif') NOT NULL DEFAULT 'aktif' AFTER `role`");
-    if ($resStatus) {
-        addResult($results, true, 'Kolom <code>status</code> ditambahkan ke tabel <code>users</code>');
+$tableUsersExists = $conn->query("SHOW TABLES LIKE 'users'");
+if ($tableUsersExists && $tableUsersExists->num_rows > 0) {
+    $colCheckStatus = $conn->query("SHOW COLUMNS FROM `users` LIKE 'status'");
+    if ($colCheckStatus->num_rows === 0) {
+        $resStatus = $conn->query("ALTER TABLE `users` ADD COLUMN `status` ENUM('aktif', 'nonaktif') NOT NULL DEFAULT 'aktif' AFTER `role`");
+        if ($resStatus) {
+            addResult($results, true, 'Kolom <code>status</code> ditambahkan ke tabel <code>users</code>');
+        } else {
+            addResult($results, false, 'Gagal menambahkan kolom <code>status</code> ke users', $conn->error);
+            $hasError = true;
+        }
     } else {
-        addResult($results, false, 'Gagal menambahkan kolom <code>status</code> ke users', $conn->error);
-        $hasError = true;
+        addResult($results, true, 'Kolom <code>status</code> di users sudah ada – dilewati');
     }
-} else {
-    addResult($results, true, 'Kolom <code>status</code> di users sudah ada – dilewati');
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // LANGKAH 1.6: Tambahkan kolom baru ke tabel `booking` jika belum ada (Guest Checkout Migration)
 // ─────────────────────────────────────────────────────────────────────────────
-$bookingCols = [
-    'kode_booking' => "VARCHAR(20) NULL UNIQUE AFTER id_booking",
-    'nama_pelanggan' => "VARCHAR(100) NULL AFTER kode_booking",
-    'no_hp' => "VARCHAR(20) NULL AFTER nama_pelanggan",
-    'catatan' => "TEXT NULL AFTER total_harga",
-    'metode_pembayaran' => "VARCHAR(50) NULL AFTER catatan",
-    'status_pembayaran' => "ENUM('Menunggu Pembayaran', 'Menunggu Verifikasi', 'Lunas', 'Ditolak') NOT NULL DEFAULT 'Menunggu Pembayaran' AFTER metode_pembayaran",
-    'bukti_pembayaran' => "VARCHAR(255) NULL AFTER status_pembayaran",
-    'tanggal_pembayaran' => "DATETIME NULL AFTER bukti_pembayaran",
-    'checkin_at' => "DATETIME NULL DEFAULT NULL AFTER tanggal_pembayaran",
-    'tanggal_selesai' => "DATETIME NULL DEFAULT NULL AFTER checkin_at"
-];
+$tableBookingExists = $conn->query("SHOW TABLES LIKE 'booking'");
+if ($tableBookingExists && $tableBookingExists->num_rows > 0) {
+    $bookingCols = [
+        'kode_booking' => "VARCHAR(20) NULL UNIQUE AFTER id_booking",
+        'nama_pelanggan' => "VARCHAR(100) NULL AFTER kode_booking",
+        'no_hp' => "VARCHAR(20) NULL AFTER nama_pelanggan",
+        'catatan' => "TEXT NULL AFTER total_harga",
+        'metode_pembayaran' => "VARCHAR(50) NULL AFTER catatan",
+        'status_pembayaran' => "ENUM('Menunggu Pembayaran', 'Menunggu Verifikasi', 'Lunas', 'Ditolak') NOT NULL DEFAULT 'Menunggu Pembayaran' AFTER metode_pembayaran",
+        'bukti_pembayaran' => "VARCHAR(255) NULL AFTER status_pembayaran",
+        'tanggal_pembayaran' => "DATETIME NULL AFTER bukti_pembayaran",
+        'checkin_at' => "DATETIME NULL DEFAULT NULL AFTER tanggal_pembayaran",
+        'tanggal_selesai' => "DATETIME NULL DEFAULT NULL AFTER checkin_at"
+    ];
 
-foreach ($bookingCols as $col => $def) {
-    $checkCol = $conn->query("SHOW COLUMNS FROM `booking` LIKE '$col'");
-    if ($checkCol->num_rows === 0) {
-        $resCol = $conn->query("ALTER TABLE `booking` ADD COLUMN `$col` $def");
-        if ($resCol) {
-            addResult($results, true, "Kolom <code>$col</code> ditambahkan ke tabel <code>booking</code>");
-        } else {
-            addResult($results, false, "Gagal menambahkan <code>$col</code> ke booking", $conn->error);
-            global $hasError;
-            $hasError = true;
+    foreach ($bookingCols as $col => $def) {
+        $checkCol = $conn->query("SHOW COLUMNS FROM `booking` LIKE '$col'");
+        if ($checkCol->num_rows === 0) {
+            $resCol = $conn->query("ALTER TABLE `booking` ADD COLUMN `$col` $def");
+            if ($resCol) {
+                addResult($results, true, "Kolom <code>$col</code> ditambahkan ke tabel <code>booking</code>");
+            } else {
+                addResult($results, false, "Gagal menambahkan <code>$col</code> ke booking", $conn->error);
+                global $hasError;
+                $hasError = true;
+            }
         }
-    } else {
-        // Silent success for already existing columns to avoid clutter
     }
-}
-addResult($results, true, 'Pengecekan struktur tabel <code>booking</code> selesai');
+    addResult($results, true, 'Pengecekan struktur tabel <code>booking</code> selesai');
 
-// ─────────────────────────────────────────────────────────────────────────────
-// LANGKAH 1.7: Hapus kolom `id_user` dari tabel `booking` jika ada (Sisa versi lama)
-// ─────────────────────────────────────────────────────────────────────────────
-$checkIdUser = $conn->query("SHOW COLUMNS FROM `booking` LIKE 'id_user'");
-if ($checkIdUser->num_rows > 0) {
-    // Drop FK constraint (berdasarkan error message yang terdeteksi)
-    try {
-        $conn->query("ALTER TABLE `booking` DROP FOREIGN KEY `booking_ibfk_1`");
-    } catch (Exception $e) {
-        // Abaikan jika tidak ada
-    }
-    
-    // Drop kolom
-    $resDrop = $conn->query("ALTER TABLE `booking` DROP COLUMN `id_user`");
-    if ($resDrop) {
-        addResult($results, true, 'Sisa kolom lama <code>id_user</code> dan Foreign Key dihapus dari tabel <code>booking</code>');
-    } else {
-        addResult($results, false, 'Gagal menghapus <code>id_user</code> dari booking', $conn->error);
+    // ─────────────────────────────────────────────────────────────────────────────
+    // LANGKAH 1.7: Hapus kolom `id_user` dari tabel `booking` jika ada (Sisa versi lama)
+    // ─────────────────────────────────────────────────────────────────────────────
+    $checkIdUser = $conn->query("SHOW COLUMNS FROM `booking` LIKE 'id_user'");
+    if ($checkIdUser->num_rows > 0) {
+        try {
+            $conn->query("ALTER TABLE `booking` DROP FOREIGN KEY `booking_ibfk_1`");
+        } catch (Exception $e) { }
+        
+        $resDrop = $conn->query("ALTER TABLE `booking` DROP COLUMN `id_user`");
+        if ($resDrop) {
+            addResult($results, true, 'Sisa kolom lama <code>id_user</code> dan Foreign Key dihapus dari tabel <code>booking</code>');
+        } else {
+            addResult($results, false, 'Gagal menghapus <code>id_user</code> dari booking', $conn->error);
+        }
     }
 }
 
