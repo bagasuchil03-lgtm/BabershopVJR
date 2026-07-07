@@ -30,10 +30,13 @@ if ($conn->connect_error) {
 // Mengatur charset utf8mb4 untuk mendukung berbagai karakter termasuk emoji
 $conn->set_charset("utf8mb4");
 
-    // Pastikan kolom nama_pelanggan ada di tabel booking
-    $checkCol = $conn->query("SHOW COLUMNS FROM booking LIKE 'nama_pelanggan'");
-    if ($checkCol && $checkCol->num_rows == 0) {
-        $conn->query("ALTER TABLE booking ADD COLUMN nama_pelanggan VARCHAR(100) NOT NULL");
+    // Pastikan kolom nama_pelanggan ada di tabel booking (hanya jika tabel sudah ada)
+    $tableExists = $conn->query("SHOW TABLES LIKE 'booking'");
+    if ($tableExists && $tableExists->num_rows > 0) {
+        $checkCol = $conn->query("SHOW COLUMNS FROM booking LIKE 'nama_pelanggan'");
+        if ($checkCol && $checkCol->num_rows == 0) {
+            $conn->query("ALTER TABLE booking ADD COLUMN nama_pelanggan VARCHAR(100) NOT NULL");
+        }
     }
 
 
