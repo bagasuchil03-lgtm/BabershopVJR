@@ -8,12 +8,12 @@
  * HAPUS FILE INI SETELAH IMPORT BERHASIL!
  */
 
-// Konfigurasi Railway (internal)
-$host     = 'mysql.railway.internal';
-$username = 'root';
-$password = 'AErAuDgWqwPEDFcTWIMbwrsHZIXBCLEr';
-$database = 'railway';
-$port     = 3306;
+// Konfigurasi Railway (internal / public fallback)
+$host     = getenv('MYSQLHOST') ?: 'hayabusa.proxy.rlwy.net';
+$username = getenv('MYSQLUSER') ?: 'root';
+$password = getenv('MYSQLPASSWORD') ?: 'AErAuDgWqwPEDFcTWIMbwrsHZIXBCLEr';
+$database = getenv('MYSQLDATABASE') ?: 'railway';
+$port     = getenv('MYSQLPORT') ?: 26577;
 
 echo "<pre style='font-family:monospace; background:#111; color:#0f0; padding:20px;'>\n";
 echo "=== IMPORT DATABASE KE RAILWAY ===\n\n";
