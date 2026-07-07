@@ -13,11 +13,12 @@
 // ==========================================
 // KONFIGURASI RAILWAY (AKTIF)
 // ==========================================
-$host     = 'mysql.railway.internal';
-$username = 'root';
-$password = 'AErAuDgWqwPEDFcTWIMbwrsHZIXBCLEr';
-$database = 'railway';
-$port     = 3306;
+// Gunakan environment variables dari Railway, dengan fallback ke Public Host jika internal gagal
+$host     = getenv('MYSQLHOST') ?: 'hayabusa.proxy.rlwy.net';
+$username = getenv('MYSQLUSER') ?: 'root';
+$password = getenv('MYSQLPASSWORD') ?: 'AErAuDgWqwPEDFcTWIMbwrsHZIXBCLEr';
+$database = getenv('MYSQLDATABASE') ?: 'railway';
+$port     = getenv('MYSQLPORT') ?: 26577;
 
 // Membuat koneksi menggunakan mysqli (Procedural + Object Oriented concept)
 $conn = new mysqli($host, $username, $password, $database, $port);
