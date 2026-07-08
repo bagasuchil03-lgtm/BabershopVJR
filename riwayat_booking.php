@@ -300,7 +300,7 @@ $stat = $conn->query("SELECT
                                 </td>
                                 <td>
                                     <?php if (!empty($row['bukti_pembayaran'])): ?>
-                                        <a href="uploads/bukti/<?= htmlspecialchars($row['bukti_pembayaran']) ?>" target="_blank" class="btn-view-bukti">
+                                        <a href="lihat_bukti.php?id=<?= $row['id_booking'] ?>" target="_blank" class="btn-view-bukti">
                                             <i class="bi bi-receipt"></i> Lihat
                                         </a>
                                     <?php else: ?>

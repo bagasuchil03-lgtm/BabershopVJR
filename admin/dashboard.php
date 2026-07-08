@@ -1431,7 +1431,7 @@ $users_query = $conn->query("SELECT * FROM users ORDER BY id_user ASC");
                                                     <td class="text-gold fw-bold">Rp <?= number_format($pay['total_harga'], 0, ',', '.') ?></td>
                                                     <td>
                                                         <?php if (!empty($pay['bukti_pembayaran'])): ?>
-                                                            <a href="../uploads/bukti/<?= htmlspecialchars($pay['bukti_pembayaran']) ?>" target="_blank" class="btn btn-xs btn-outline-gold py-1 px-2 rounded" style="font-size:0.75rem;">
+                                                            <a href="../lihat_bukti.php?id=<?= $pay['id_booking'] ?>" target="_blank" class="btn btn-xs btn-outline-gold py-1 px-2 rounded" style="font-size:0.75rem;">
                                                                 <i class="fas fa-image me-1"></i>Cek Bukti
                                                             </a>
                                                         <?php else: ?>

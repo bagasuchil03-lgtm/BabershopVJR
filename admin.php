@@ -2133,16 +2133,10 @@ $flashStatus  = isset($_GET['status'])  ? htmlspecialchars(urldecode($_GET['stat
                                 <span class="booking-meta-item"><i class="bi bi-cash-stack"></i>Rp <?= number_format($bk['total_harga'], 0, ',', '.') ?></span>
                                 <?php if (!empty($bk['bukti_pembayaran'])): ?>
                                 <span class="booking-meta-item ms-2">
-                                    <?php if(file_exists('uploads/bukti/' . $bk['bukti_pembayaran'])): ?>
-                                    <a href="uploads/bukti/<?= htmlspecialchars($bk['bukti_pembayaran']) ?>" target="_blank"
+                                    <a href="lihat_bukti.php?id=<?= $bk['id_booking'] ?>" target="_blank"
                                        style="background:rgba(77,159,255,0.2);color:var(--accent-blue);border:1px solid rgba(77,159,255,0.4);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none;">
                                         <i class="bi bi-receipt"></i> Lihat Bukti
                                     </a>
-                                    <?php else: ?>
-                                    <span style="background:rgba(255,77,77,0.1);color:#ff4d4d;border:1px solid rgba(255,77,77,0.3);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;">
-                                        <i class="bi bi-exclamation-triangle"></i> File Hilang
-                                    </span>
-                                    <?php endif; ?>
                                 </span>
                                 <?php endif; ?>
                             </div>
@@ -2214,15 +2208,9 @@ $flashStatus  = isset($_GET['status'])  ? htmlspecialchars(urldecode($_GET['stat
                             </span>
                             <?php if (!empty($bk['bukti_pembayaran'])): ?>
                             <span class="booking-meta-item ms-2">
-                                <?php if(file_exists('uploads/bukti/' . $bk['bukti_pembayaran'])): ?>
-                                <a href="uploads/bukti/<?= htmlspecialchars($bk['bukti_pembayaran']) ?>" target="_blank" class="badge bg-info text-dark text-decoration-none" style="padding:0.5em 0.8em; font-size:0.9em;">
+                                <a href="lihat_bukti.php?id=<?= $bk['id_booking'] ?>" target="_blank" class="badge bg-info text-dark text-decoration-none" style="padding:0.5em 0.8em; font-size:0.9em;">
                                     <i class="bi bi-receipt"></i> Lihat Bukti
                                 </a>
-                                <?php else: ?>
-                                <span class="badge bg-danger" style="padding:0.5em 0.8em; font-size:0.9em;">
-                                    <i class="bi bi-exclamation-triangle"></i> File Hilang
-                                </span>
-                                <?php endif; ?>
                             </span>
                             <?php endif; ?>
                         </div>

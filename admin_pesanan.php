@@ -116,10 +116,10 @@ function formatRupiah($angka){
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                   </div>
                                                   <div class="modal-body text-center">
-                                                    <!-- Tampilkan gambar bukti pembayaran, sesuaikan path foldernya -->
+                                                    <!-- Tampilkan gambar bukti pembayaran -->
                                                     <p class="text-muted small mb-2">File: <?= htmlspecialchars($row['bukti_pembayaran']) ?></p>
                                                     <div class="bg-light p-3 border rounded mb-3">
-                                                        <span class="text-muted">Ilustrasi Gambar Bukti (Sesuaikan dengan direktori upload Anda)</span>
+                                                        <img src="lihat_bukti.php?id=<?= $row['id'] ?>" class="img-fluid rounded" alt="Bukti Pembayaran" style="max-height: 400px; object-fit: contain;">
                                                     </div>
                                                     <p class="mb-0"><strong>Total Tagihan:</strong> <?= formatRupiah($row['total_harga']) ?></p>
                                                   </div>

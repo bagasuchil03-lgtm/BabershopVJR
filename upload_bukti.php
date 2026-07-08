@@ -43,12 +43,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 mkdir($upload_dir, 0777, true);
             }
             
-            if (move_uploaded_file($_FILES['bukti_pembayaran']['tmp_name'], $upload_dir . $new_filename)) {
+            $file_tmp = $_FILES['bukti_pembayaran']['tmp_name'];
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mime_type = finfo_file($finfo, $file_tmp);
+            finfo_close($finfo);
+            
+            $file_data = file_get_contents($file_tmp);
+            $base64 = 'data:' . $mime_type . ';base64,' . base64_encode($file_data);
+
+            if (move_uploaded_file($file_tmp, $upload_dir . $new_filename) || true) {
                 $upd_query = "UPDATE booking SET bukti_pembayaran = ?, status_pembayaran = 'Menunggu Verifikasi', tanggal_pembayaran = NOW() WHERE id_booking = ?";
                 $upd_stmt = $conn->prepare($upd_query);
                 $upd_stmt->bind_param("si", $new_filename, $id_booking);
                 
                 if ($upd_stmt->execute()) {
+                    $ins_file = $conn->prepare("INSERT INTO bukti_pembayaran_files (id_booking, file_data) VALUES (?, ?)");
+                    $ins_file->bind_param("is", $id_booking, $base64);
+                    $ins_file->execute();
+                    
                     $_SESSION['success_msg'] = "Bukti pembayaran berhasil diupload dan sedang menunggu verifikasi.";
                     header("Location: riwayat.php");
                     exit;

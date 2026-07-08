@@ -165,5 +165,17 @@ $conn->query("
 ");
 echo "- Checked / Created table 'notifikasi'\n";
 
+// 13. Create table for storing base64 payment proofs to bypass ephemeral filesystem
+$conn->query("
+    CREATE TABLE IF NOT EXISTS bukti_pembayaran_files (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        kode_booking VARCHAR(50) NULL,
+        id_booking INT NULL,
+        file_data LONGTEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB;
+");
+echo "- Checked / Created table 'bukti_pembayaran_files'\n";
+
 echo "Database migration completed successfully!\n";
 ?>

@@ -33,11 +33,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['bukti_pembayaran']))
             $new_file_name = 'bukti_' . $kode_booking . '_' . uniqid() . '.' . $file_ext;
             $dest_path = 'uploads/bukti/' . $new_file_name;
             
-            if (move_uploaded_file($file_tmp, $dest_path)) {
+            // Generate base64
+            $file_data = file_get_contents($file_tmp);
+            $base64 = 'data:' . $mime_type . ';base64,' . base64_encode($file_data);
+
+            if (move_uploaded_file($file_tmp, $dest_path) || true) {
                 $now = date('Y-m-d H:i:s');
                 $update_stmt = $conn->prepare("UPDATE booking SET bukti_pembayaran = ?, status_pembayaran = 'Menunggu Verifikasi', tanggal_pembayaran = ? WHERE kode_booking = ?");
                 $update_stmt->bind_param("sss", $new_file_name, $now, $kode_booking);
                 if ($update_stmt->execute()) {
+                    // Save to DB
+                    $ins_file = $conn->prepare("INSERT INTO bukti_pembayaran_files (kode_booking, file_data) VALUES (?, ?)");
+                    $ins_file->bind_param("ss", $kode_booking, $base64);
+                    $ins_file->execute();
                     $upload_success = "Bukti pembayaran berhasil diunggah! Menunggu verifikasi admin.";
                 } else {
                     $upload_error = "Gagal memperbarui data booking di database.";
@@ -421,7 +429,7 @@ if (isset($bankInfo[$method])) {
                                             <i class="fas fa-spinner fa-spin me-1"></i> Bukti pembayaran telah diunggah. Kami sedang memverifikasi pembayaran Anda.
                                             <?php if (!empty($booking['bukti_pembayaran'])): ?>
                                                 <div class="mt-2 text-center text-md-start">
-                                                    <a href="uploads/bukti/<?= htmlspecialchars($booking['bukti_pembayaran']) ?>" target="_blank" class="small text-gold text-decoration-none">
+                                                    <a href="lihat_bukti.php?id=<?= $booking['kode_booking'] ?>" target="_blank" class="small text-gold text-decoration-none">
                                                         <i class="fas fa-image me-1"></i> Lihat Bukti yang Diunggah
                                                     </a>
                                                 </div>
