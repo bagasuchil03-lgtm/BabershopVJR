@@ -115,7 +115,9 @@ $result = $conn->query($query);
                                         $ext = strtolower(pathinfo($row['bukti_pembayaran'], PATHINFO_EXTENSION));
                                         $path = "uploads/bukti/" . htmlspecialchars($row['bukti_pembayaran']);
                                     ?>
-                                    <?php if($ext === 'pdf'): ?>
+                                    <?php if(!file_exists($path)): ?>
+                                        <span class="text-danger small"><i class="bi bi-exclamation-triangle"></i> File Hilang</span>
+                                    <?php elseif($ext === 'pdf'): ?>
                                         <a href="<?= $path ?>" target="_blank" class="btn btn-sm btn-outline-danger"><i class="bi bi-file-pdf"></i> Lihat PDF</a>
                                     <?php else: ?>
                                         <a href="<?= $path ?>" target="_blank">
