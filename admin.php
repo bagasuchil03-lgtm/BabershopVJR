@@ -2131,14 +2131,19 @@ $flashStatus  = isset($_GET['status'])  ? htmlspecialchars(urldecode($_GET['stat
                                 <span class="booking-meta-item"><i class="bi bi-clock"></i><?= substr($bk['jam_booking'], 0, 5) ?></span>
                                 <span class="booking-meta-item"><i class="bi bi-telephone"></i><?= htmlspecialchars($bk['no_hp']) ?></span>
                                 <span class="booking-meta-item"><i class="bi bi-cash-stack"></i>Rp <?= number_format($bk['total_harga'], 0, ',', '.') ?></span>
-                                <?php if (!empty($bk['bukti_pembayaran'])): ?>
-                                <span class="booking-meta-item ms-2">
-                                    <a href="lihat_bukti.php?id=<?= $bk['id_booking'] ?>" target="_blank"
-                                       style="background:rgba(77,159,255,0.2);color:var(--accent-blue);border:1px solid rgba(77,159,255,0.4);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none;">
-                                        <i class="bi bi-receipt"></i> Lihat Bukti
-                                    </a>
+                                <span class="booking-meta-item">
+                                    <?php if (!empty($bk['bukti_pembayaran'])): ?>
+                                        <a href="lihat_bukti.php?id=<?= $bk['id_booking'] ?>" target="_blank"
+                                           style="color:var(--gold-primary);font-weight:600;font-size:12px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;"
+                                           onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+                                            <i class="bi bi-receipt" style="color:var(--gold-primary);"></i> Lihat Bukti
+                                        </a>
+                                    <?php else: ?>
+                                        <span style="color:var(--text-muted);font-size:12px;font-style:italic;">
+                                            <i class="bi bi-image" style="color:var(--text-muted);"></i> Belum ada bukti
+                                        </span>
+                                    <?php endif; ?>
                                 </span>
-                                <?php endif; ?>
                             </div>
                             <div class="booking-code">#<?= htmlspecialchars($bk['kode_booking']) ?></div>
                         </div>
@@ -2206,13 +2211,19 @@ $flashStatus  = isset($_GET['status'])  ? htmlspecialchars(urldecode($_GET['stat
                                 <i class="bi bi-cash-stack"></i>
                                 Rp <?= number_format($bk['total_harga'], 0, ',', '.') ?>
                             </span>
-                            <?php if (!empty($bk['bukti_pembayaran'])): ?>
-                            <span class="booking-meta-item ms-2">
-                                <a href="lihat_bukti.php?id=<?= $bk['id_booking'] ?>" target="_blank" class="badge bg-info text-dark text-decoration-none" style="padding:0.5em 0.8em; font-size:0.9em;">
-                                    <i class="bi bi-receipt"></i> Lihat Bukti
-                                </a>
+                            <span class="booking-meta-item">
+                                <?php if (!empty($bk['bukti_pembayaran'])): ?>
+                                    <a href="lihat_bukti.php?id=<?= $bk['id_booking'] ?>" target="_blank"
+                                       style="color:var(--gold-primary);font-weight:600;font-size:12px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;"
+                                       onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+                                        <i class="bi bi-receipt" style="color:var(--gold-primary);"></i> Lihat Bukti
+                                    </a>
+                                <?php else: ?>
+                                    <span style="color:var(--text-muted);font-size:12px;font-style:italic;">
+                                        <i class="bi bi-image" style="color:var(--text-muted);"></i> Belum ada bukti
+                                    </span>
+                                <?php endif; ?>
                             </span>
-                            <?php endif; ?>
                         </div>
                         <div class="booking-code">#<?= htmlspecialchars($bk['kode_booking']) ?></div>
 
