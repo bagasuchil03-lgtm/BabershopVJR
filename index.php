@@ -90,7 +90,10 @@ if ($slider_check && $slider_check->num_rows > 0) {
     $slider_res = $conn->query("SELECT file_path FROM about_slider_photos ORDER BY created_at ASC");
     if ($slider_res) {
         while ($r = $slider_res->fetch_assoc()) {
-            $aboutSliderPhotos[] = $r['file_path'];
+            $path = $r['file_path'];
+            if (filter_var($path, FILTER_VALIDATE_URL) || file_exists($path)) {
+                $aboutSliderPhotos[] = $path;
+            }
         }
     }
 }
@@ -102,7 +105,10 @@ if ($gallery_check && $gallery_check->num_rows > 0) {
     $gal_res = $conn->query("SELECT file_path FROM homepage_photos ORDER BY created_at DESC");
     if ($gal_res) {
         while ($r = $gal_res->fetch_assoc()) {
-            $gallery_data[] = $r['file_path'];
+            $path = $r['file_path'];
+            if (filter_var($path, FILTER_VALIDATE_URL) || file_exists($path)) {
+                $gallery_data[] = $path;
+            }
         }
     }
 }
@@ -929,9 +935,12 @@ if (isset($_SESSION['id_user']) && $_SESSION['role'] !== 'admin') {
                     $harga   = (float)($layanan['harga'] ?? 0);
                     $durasi  = (int)($layanan['durasi_menit'] ?? 0);
                     $id_lay  = (int)($layanan['id_layanan'] ?? 0);
-                    $img     = !empty($layanan['image_path'])
-                               ? htmlspecialchars($layanan['image_path'])
-                               : $service_images[$i % count($service_images)];
+                    $imgPath = $layanan['image_path'] ?? '';
+                    if (!empty($imgPath) && (filter_var($imgPath, FILTER_VALIDATE_URL) || file_exists($imgPath))) {
+                        $img = htmlspecialchars($imgPath);
+                    } else {
+                        $img = $service_images[$i % count($service_images)];
+                    }
                 ?>
                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="<?= $i * 100 ?>">
                     <a href="booking.php?layanan=<?= $id_lay ?>" class="service-card">
