@@ -89,10 +89,18 @@ $slider_check = $conn->query("SHOW TABLES LIKE 'about_slider_photos'");
 if ($slider_check && $slider_check->num_rows > 0) {
     $slider_res = $conn->query("SELECT file_path FROM about_slider_photos ORDER BY created_at ASC");
     if ($slider_res) {
+        $fallback_slider = [
+            'assets/img/barbershop_interior.png',
+            'assets/img/shaving_trim.png'
+        ];
+        $fb_idx = 0;
         while ($r = $slider_res->fetch_assoc()) {
             $path = $r['file_path'];
             if (filter_var($path, FILTER_VALIDATE_URL) || file_exists($path)) {
                 $aboutSliderPhotos[] = $path;
+            } else {
+                $aboutSliderPhotos[] = $fallback_slider[$fb_idx % count($fallback_slider)];
+                $fb_idx++;
             }
         }
     }
@@ -104,10 +112,19 @@ $gallery_check = $conn->query("SHOW TABLES LIKE 'homepage_photos'");
 if ($gallery_check && $gallery_check->num_rows > 0) {
     $gal_res = $conn->query("SELECT file_path FROM homepage_photos ORDER BY created_at DESC");
     if ($gal_res) {
+        $fallback_gallery = [
+            'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=80'
+        ];
+        $fb_idx = 0;
         while ($r = $gal_res->fetch_assoc()) {
             $path = $r['file_path'];
             if (filter_var($path, FILTER_VALIDATE_URL) || file_exists($path)) {
                 $gallery_data[] = $path;
+            } else {
+                $gallery_data[] = $fallback_gallery[$fb_idx % count($fallback_gallery)];
+                $fb_idx++;
             }
         }
     }
