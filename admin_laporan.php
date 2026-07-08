@@ -78,7 +78,7 @@ $q_svc = $conn->prepare(
      FROM booking b
      JOIN layanan l ON b.id_layanan = l.id_layanan
      WHERE b.status = 'selesai' AND YEAR(b.tanggal_booking) = ?
-     GROUP BY b.id_layanan
+     GROUP BY b.id_layanan, l.nama_layanan
      ORDER BY jml DESC
      LIMIT 6"
 );
@@ -96,7 +96,7 @@ $q_barber = $conn->prepare(
      FROM booking b
      JOIN barber br ON b.id_barber = br.id_barber
      WHERE b.status = 'selesai' AND YEAR(b.tanggal_booking) = ?
-     GROUP BY b.id_barber
+     GROUP BY b.id_barber, br.nama_barber
      ORDER BY jml DESC
      LIMIT 6"
 );
